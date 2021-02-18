@@ -16,8 +16,6 @@ jellyfish histo -o mer_counts.histo mer_counts
 SOAPdenovo-63mer all -s contig_file -K 41 -o graph_prefix 1>ass.log 2>ass.err
 GapCloser -b contig -a WWS.fasta -o WWS_genome.fasta
 
-###########################################################################################################################################################
-
 #Hi-C
 bwa index -a bwtsw WWS_genome.fasta
 bwa aln WWS_genome.fasta reads_R1.fastq.gz > reads_R1.sai
