@@ -37,4 +37,4 @@ res0vs1 <- results(dds, contrast = c("condition","FF","SF"))
 table(res0vs1$pvalue <0.01)
 res0vs1 <- res0vs1[order(res0vs1$pvalue),]
 write.table(as.data.frame(res0vs1), file="res0vs1.xls", sep="\t", quote = F)
-#other groups (FF VS FM, FF VS SM, SF VS FM, SF VS SM, FM VS SM were processed with same parameters
+#other groups (FF VS FM, FF VS SM, SF VS FM, SF VS SM, FM VS SM) were processed with same parameters
