@@ -10,16 +10,18 @@ java -jar /home/qlu/software/Trimmomatic/Trimmomatic-0.39/trimmomatic-0.39.jar P
 ls /home/qlu/bailachong/genome/fastqc/*gz | xargs fastqc -t 2 -o /home/qlu/bailachong/genome/fastqc/output  #paired data were used 
 multiqc ./
 
-#aligned to genome
+#align to genome
 hisat2-build –p 4 WWS_genome.fa genome
 hisat2 -p 16 -x ./qlu/genome -1 FF1_1.fastq,FF2_1.fastq,FF3_1.fastq,SF1_1.fastq,SF2_1.fastq,SF3_1.fastq,FM1_1.fastq,FM2_1.fastq,FM3_1.fastq,SM1_1.fastq,SM2_1.fastq,SM3_1.fastq -2 FF1_2.fastq,FF2_2.fastq,FF3_2.fastq,SF1_2.fastq,SF2_2.fastq,SF3_2.fastq,FM1_2.fastq,FM2_2.fastq,FM3_2.fastq,SM1_2.fastq,SM2_2.fastq,SM3_2.fastq –S WWS.sam
 samtools view -b WWS.sam > WWS.bam
 samtools sort WWS.bam -o WWS_sort.bam
 samtools index WWS_sorted.bam
 
+#identify counts
 GTF="/home/qlu/bailachong/RNA_seq/hisat2/bailachong.gtf"
 featureCounts -T 5 -t exon -g gene_id -a $GTF -p -o WWS_RNA.txt *sort.bam
 
+#identify DEGs
 options(stringsAsFactors=F)
 #the data was imported to excel for identify the DEGs
 library("DESeq2")
