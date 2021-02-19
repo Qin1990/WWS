@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/bash
 #Genomic assembly
 #trimmed Reads
 java -jar /home/qlu/software/Trimmomatic/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 16 -trimlog tri.log WWS_1.fq.gz WWS_2.fq.gz unpaired_WWS_1.fq.gz paired_WWS_1.fq.gz unpaired_WWS_2.fq.gz paired_WWS_2.fq.gz ILLUMINACLIP:/home/qlu/software/Trimmomatic/Trimmomatic-0.39/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 MINLEN:36
